@@ -1,0 +1,126 @@
+##BLUEPOND AI
+# -- Question 1 --
+# arraylist = {"array1" : [2,1,5,4],
+# "array2" : [2,2,7,1,1],
+# "array3" : [3,41,2,55]
+# }
+
+# def combinearrays(array1, array2):
+#     for a2 in array2:
+#         array1.append(a2)
+#     return array1
+
+# def combinebeforesort(arraylist):
+#     arrays = list(arraylist.values())
+#     combine = arrays[0]
+#     for i in range(len(arrays)):        
+#         for j in range(i+1, len(arrays)):
+#             combine = combinearrays(combine, arrays[j])
+#     return combine
+
+
+        
+# def sortCombinedarray():
+#     combinedarray = combinebeforesort(arraylist)
+#     for i in range(len(combinedarray)):
+#         for j in range(i+1, len(combinedarray)):
+#             if combinedarray[i] > combinedarray[j]:
+#                 combinedarray[i], combinedarray[j] = combinedarray[j], combinedarray[i]
+             
+#     return combinedarray
+
+# print(sortCombinedarray())
+
+##Question 2
+
+employee_data = [
+    {
+        "id": 1,
+        "name": "John Doe",
+        "position": "Software Engineer",
+        "department": "Engineering",
+        "salary": 80000
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "position": "Marketing Specialist",
+        "department": "Marketing",
+        "salary": 60000
+    },
+    {
+        "id": 3,
+        "name": "Bob Johnson",
+        "position": "HR Manager",
+        "department": "Human Resources",
+        "salary": 70000
+    }
+]
+
+string = "Jane smith"
+string1  = ["contain", "contains"]
+
+conditions = [{"atr": "name", "atr_value":"Jane ","opt":"contain"},{"atr": "salary", "atr_value":"10000","opt":">"}]
+resultEmployees = []
+for employee in employee_data:
+    i =0
+    conditionCount = 0
+    for condition in conditions:        
+        if condition["atr"] in ["name", "position", "department"]:
+            """String operations"""
+            to_check = condition["opt"]
+            if to_check in ["contain", "contains"]:      
+                if condition["atr_value"] in employee["name"]:
+                    conditionCount +=1    
+        else:
+            """mathematical comparisons"""
+            to_check = condition["opt"]
+            if to_check == ">":
+                if employee["salary"] > float(condition["atr_value"]):
+                    conditionCount+=1
+            elif to_check == "<":
+                if employee["salary"] < float(condition["atr_value"]):
+                    conditionCount+=1
+            else:
+                if employee["salary"] == float(condition["atr_value"]):
+                    conditionCount+=1
+        i+=1
+    if conditionCount == len(conditions):
+        resultEmployees.append(employee)
+
+print(resultEmployees)
+
+
+# import requests
+# from bs4 import BeautifulSoup
+
+# url = "https://status.apigee.com/"
+# content = requests.get(url).content
+
+# site = BeautifulSoup(content, "html5lib")
+# # print(site.find_all("div"))
+# htmlclass = "unresolved-incident impact-maintenance"
+# content  = site.find_all("div", attrs={"class" : htmlclass})
+# for c in content:
+#     print(c.a)
+#     print(c.span)
+#     print("#############################")
+
+#############################################################
+
+# lst =[2,3,6,8]
+# print([l for l in lst if l%2==0])
+
+#############################################################
+
+# from collections import Counter
+# lst = [1,1,1,64, 23, 64,22,22,22]
+# out = []
+# counters = Counter(lst)
+# k = 3
+# for count in counters:
+#     if counters[count] >= k:
+#         out.append(count)
+
+
+# print(out)
