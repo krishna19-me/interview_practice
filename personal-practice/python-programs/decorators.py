@@ -1,5 +1,7 @@
 def smart_div(func):
+    print("Inside smart_div")
     def inner_div(a, b):
+        print("inside inner div")
         if a < b:
             a, b = b, a
         return func(a, b)
@@ -8,6 +10,7 @@ def smart_div(func):
 
 @smart_div
 def div(a, b):
+    print("Calling div")
     return a/b
 
 
